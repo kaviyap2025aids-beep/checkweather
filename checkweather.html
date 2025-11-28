@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+<title>SkyCast - Weather Forecast</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1><b> SkyCast</b></h1>
+<input type="text" id="cityInput" placeholder="Enter city name">
+<button onclick="showWeather()">Check Weather</button>
+<p id="forecast"></p>
+
+<script>
+    const weatherData = {
+      "Pollachi": { temp: "30 degree Celsius", condition: "Sunny" },
+      "Chennai": { temp: "34 degree Celsius", condition: "Humid" },
+      "Bangalore": { temp: "26 degree Celsius", condition: "Cloudy" },
+      "Delhi": { temp: "20 degree Celsius", condition: "Foggy" }
+    };
+
+    function showWeather() {
+const city = document.getElementById("cityInput").value;
+const weather = document.getElementById("forecast");
+weather.innerHTML = " ";
+
+if(weatherData[city]) {
+ const data = weatherData[city];
+ const card = document.createElement("div");
+ card.innerHTML = `
+          <h2>${city}</h2>
+          <p>Temperature: ${data.temp}</p>
+          <p>Condition: ${data.condition}</p>
+        `;	
+ weather.appendChild(card);
+ } else {
+        weather.innerHTML = "sorry,not found";
+      }
+    }
+</script>
+</body>
+</html>
